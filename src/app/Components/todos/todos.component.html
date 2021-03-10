@@ -1,0 +1,17 @@
+<div>
+here is my title: {{title}}
+<!-- {{metodeNavn}}
+<br>
+{{metodeNavn()}} -->
+<br>
+<button (click)="metodeNavn1()" >my button</button>
+
+<ul *ngFor="let item of todos">
+<li>{{item.title}}</li>
+<p *ngIf="item.completed">sandt og title: {{item.title}}</p>
+<!-- prøv og lave en paragraph hvor den trækker id 1 ud -->
+</ul>
+<!--
+{{1 + 1}}
+{{100 |currency}} -->
+</div>
