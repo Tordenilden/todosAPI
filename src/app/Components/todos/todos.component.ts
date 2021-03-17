@@ -13,8 +13,9 @@ export class TodosComponent implements OnInit {
   title: string ="my title";
   // vil gerne have en variabel af typen Todo og det skal være en Collection??
   // variabel navn todo eller hans
-  todos: Todo[];
+  todos: Todo[]; // alle Todos fra API
   choice:boolean = true;
+  todoObj:Todo;
   //methods
   metodeNavn():void{
     console.log("tester en metode");
@@ -46,10 +47,39 @@ export class TodosComponent implements OnInit {
     //ERROR øv Type 'Observable<Todo[]>' is missing the following
     // properties from type 'Todo[]': length, pop, push, concat, and 25 more.ts(2740)
     this.todosService.getTodos().subscribe(
-      dataFromAPI => {this.todos = dataFromAPI}
+      dataFromAPI => {
+        console.log(dataFromAPI);
+        this.todos = dataFromAPI;
+      }
     ); // OMG
+
+    /**************** POST EN TODO ***************************** */
+    //this.todosService.postTodos(sende objekt med)
+    this.todoObj = {
+      id:400,
+      title:'myTitle',
+      completed:true
+    };
+ // subscribe , venter og kommer tilbage med repsonse , godt/skidt
+    // this.todosService.postTodos(this.todoObj).subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.todos.push(data);
+    //   }
+    // )
+
+  // hvordan sikrer vi at vi får indlæst det sidste objekt? - F5, eller reloade metoden, eller vi kan benytte Push, push til array
   }
 
+  // post metode  - kaldes med en Button....
+  onSubmitPostTodo():void{
+    this.todosService.postTodos(this.todoObj).subscribe(
+      data => {
+        console.log(data);
+        this.todos.push(data);
+      }
+    )
+  }
 }
 /*
 torsdag :

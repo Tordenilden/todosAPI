@@ -7,6 +7,7 @@ import { TodosComponent } from './Components/todos/todos.component';
 import { TodoItemComponent } from './Components/todo-item/todo-item.component';
 
 import { HttpClientModule } from "@angular/common/http";
+import { GenreComponent } from './Components/genre/genre.component';
 
 
 
@@ -14,7 +15,8 @@ import { HttpClientModule } from "@angular/common/http";
   declarations: [
     AppComponent,
     TodosComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    GenreComponent
 
   ],
   imports: [

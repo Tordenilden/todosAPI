@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Todo } from '../Models/Todo';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 // betyder at den kan benyttes til DI
 @Injectable({
   providedIn: 'root'
@@ -29,10 +30,18 @@ export class TodosService {
     return this.http.get<Todo[]>(this.url);
   }
 
-  // postTodos
 
+  // postTodos skal den "gribe" noget data
+  postTodos(todoToPostData):Observable<Todo>{
+    return this.http.post<Todo>(this.url,todoToPostData,httpOptions);
+  }
   // putTodos
 
   // deleteTodos
 
+}
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
 }
